@@ -22,7 +22,7 @@ namespace Day7
             
             Console.WriteLine($"1> Total fuel required: {totalFuel}");
 
-            var average = (int)Math.Floor((decimal)crabLocations.Sum() / crabLocations.Count);
+            var average = crabLocations.Sum() / crabLocations.Count;
             var totalFuel2 = crabLocations.Select(v => FuelRate(Math.Abs(average - v))).Sum();
             
             Console.WriteLine($"2> Total fuel required: {totalFuel2}");
