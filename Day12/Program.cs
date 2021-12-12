@@ -61,9 +61,11 @@ IEnumerable<IEnumerable<string>?> GetCaveRoutesUntilEnd(Cave cave, Stack<string>
 
 var routes = GetCaveRoutesUntilEnd(startCave, new Stack<string>())
     .Where(route => route != null)
+    .Select(r => string.Join(',', r.Reverse()))
+    .Distinct()
     .ToArray();
 
-Console.WriteLine($"Possible paths: {routes.Select(r => string.Join(',', r.Reverse())).Distinct().Count()}");
+Console.WriteLine($"Possible paths: {routes.Length}");
 
 class Cave
 {
