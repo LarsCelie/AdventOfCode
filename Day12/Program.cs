@@ -26,7 +26,7 @@ var endCave = caves.FirstOrDefault(cave => cave.Id == "end");
 IEnumerable<IEnumerable<string>?> GetCaveRoutesUntilEnd(Cave cave, Stack<string> currentRoute, string duplicateSmallCaveId = null)
 {
     var routes = new List<IEnumerable<string>>();
-    if (currentRoute.Count > 0 && cave.Id == startCave.Id)
+    if (currentRoute.Count > 0 && cave == startCave)
     {
         // don't return to start cave
         return routes;
@@ -44,7 +44,7 @@ IEnumerable<IEnumerable<string>?> GetCaveRoutesUntilEnd(Cave cave, Stack<string>
     }
     currentRoute.Push(cave.Id);
 
-    if (cave.Id == endCave.Id)
+    if (cave == endCave)
     {
         routes.Add(currentRoute.ToArray());
     }
