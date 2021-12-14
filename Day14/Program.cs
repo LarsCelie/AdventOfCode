@@ -1,8 +1,12 @@
-﻿using Day14;
+﻿using System.Diagnostics;
+using Day14;
 using MoreLinq;
 
 var inputString = args.Length > 0 ? Input.TestInputPairString : Input.InputPairString;
 var polymerString = args.Length > 0 ? Input.TestPolymerString : Input.PolymerString;
+
+var sw = new Stopwatch();
+sw.Start();
 
 var pairMapping = inputString.Split(new[] { '\n', '\r'}, StringSplitOptions.RemoveEmptyEntries)
     .Select(line => line.Split(" -> "))
@@ -25,5 +29,7 @@ var measurements = currentPairs
     .Select(v => new { v.Key, Count = v.Sum(x => x.Count) })
     .OrderBy(v => v.Count)
     .ToArray();
+
+sw.Stop();
     
-Console.WriteLine($"Difference between highest and lowest value: {(measurements.Last().Count - measurements.First().Count) / 2}");
+Console.WriteLine($"Difference between highest and lowest value: {(measurements.Last().Count - measurements.First().Count) / 2} in {sw.ElapsedMilliseconds} milliseconds.");
