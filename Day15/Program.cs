@@ -111,7 +111,6 @@ class Node
     public bool isEndNode { get; set; }
     public bool isStartNode { get; set; }
     public long LowestRisk { get; set; } = long.MaxValue;
-    public bool Visited { get; set; }
     public Node PreviousNode { get; set; } = null;
 
     public Node(Coordinates coordinates, int riskLevel)
