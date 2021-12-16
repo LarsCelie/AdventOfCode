@@ -5,7 +5,7 @@ using MoreLinq;
 var inputString = args.Length > 0 ? Input.TestInputPairString : Input.InputPairString;
 var polymerString = args.Length > 0 ? Input.TestPolymerString : Input.PolymerString;
 
-var sw = new Stopwatch();
+var sw = Stopwatch.StartNew();
 sw.Start();
 
 var pairMapping = inputString.Split(new[] { '\n', '\r'}, StringSplitOptions.RemoveEmptyEntries)
@@ -30,6 +30,4 @@ var measurements = currentPairs
     .OrderBy(v => v.Count)
     .ToArray();
 
-sw.Stop();
-    
 Console.WriteLine($"Difference between highest and lowest value: {(measurements.Last().Count - measurements.First().Count) / 2} in {sw.ElapsedMilliseconds} milliseconds.");
